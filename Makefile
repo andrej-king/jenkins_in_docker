@@ -12,7 +12,7 @@ docker-pull:
 	docker-compose pull
 
 docker-build:
-	docker-compose build
+	docker-compose build --pull
 
 show-initial-password:
 	docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
