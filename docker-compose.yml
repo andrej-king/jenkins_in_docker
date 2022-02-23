@@ -12,7 +12,7 @@ services:
 
     jenkins:
         build:
-            context: ./docker/development/jenkins
+            context: ./docker/common/jenkins
         environment:
             DOCKER_HOST: tcp://docker:2376
             DOCKER_CERT_PATH: /certs/client
