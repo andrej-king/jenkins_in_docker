@@ -7,6 +7,12 @@ services:
             - "8000:8080"
         volumes:
             - jenkins-data:/var/jenkins_home
+        depends_on:
+            - jenkins-docker
+
+    jenkins-docker:
+        image: docker:dind
+        privileged: true
 
 volumes:
     jenkins-data:
