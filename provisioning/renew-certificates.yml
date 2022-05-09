@@ -1,0 +1,8 @@
+---
+-   name: Renew Certificates
+    hosts: site
+    remote_user: root
+    become: yes
+    tasks:
+      -   name: Renew certificates
+          shell: "certbot renew"

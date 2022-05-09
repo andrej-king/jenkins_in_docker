@@ -1,0 +1,3 @@
+certbot_email: andrej.tcs@gmail.com
+certbot_hosts:
+    - jenkins.demo-auction.studyfield.org

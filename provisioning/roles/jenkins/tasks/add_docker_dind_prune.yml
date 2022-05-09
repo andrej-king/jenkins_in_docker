@@ -1,0 +1,7 @@
+---
+-   name: Set periodic Docker Dind prune
+    cron:
+        name: docker-dind-prune
+        job: '/bin/sh -c "cd /home/deploy/jenkins && docker-compose exec jenkins-docker docker system prune -af --filter until=720h"' # 1 month
+        minute: '0'
+        hour: '2'
