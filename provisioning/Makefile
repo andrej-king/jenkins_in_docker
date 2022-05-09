@@ -19,5 +19,7 @@ renew-certificates:
 check-alive-hosts:
 	ansible all -m ping -i hosts.yml
 
+# ansible ad-hoc commands
+# https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
 show-initial-password:
 	ansible -i hosts.yml manager -m shell -a 'cd /home/deploy/jenkins && docker-compose exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword'
