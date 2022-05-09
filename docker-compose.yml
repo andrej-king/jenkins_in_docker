@@ -14,12 +14,12 @@ services:
         build:
             context: ./docker/common/jenkins
         environment:
-            DOCKER_HOST: tcp://docker:2376
-            DOCKER_CERT_PATH: /certs/client
-            DOCKER_TLS_VERIFY: 1
+            DOCKER_HOST: tcp://jenkins-docker:2376      # host variable for work with jenkins-docker service
+            DOCKER_CERT_PATH: /certs/client             # where store certs for work with jenkins-docker service
+            DOCKER_TLS_VERIFY: 1                        # enable encryption for use jenkins-docker service certs
         volumes:
-            - jenkins-data:/var/jenkins_home
-            - docker-certs:/certs/client:ro
+            - jenkins-data:/var/jenkins_home    # access to jenkins files
+            - docker-certs:/certs/client:ro     # get docker client certs with mode read only
         depends_on:
             - jenkins-docker
 
@@ -27,11 +27,11 @@ services:
         image: docker:dind
         privileged: true
         environment:
-            DOCKER_TLS_CERTDIR: /certs
+            DOCKER_TLS_CERTDIR: /certs          # where store certs for work with this docker service from outside
         volumes:
-            - jenkins-data:/var/jenkins_home
-            - docker-certs:/certs/client
-            - docker-data:/var/lib/docker
+            - jenkins-data:/var/jenkins_home    # access to jenkins files
+            - docker-certs:/certs/client        # client certs for jenkins service
+            - docker-data:/var/lib/docker       # volume for downloaded docker images
 
 volumes:
     jenkins-data:
